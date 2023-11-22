@@ -1,0 +1,138 @@
+<!-- lista_mensajes.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Mensajes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #contenedor-tablas {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        #datos-container {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Agregado para hacer la tabla responsive */
+        }
+
+        #otra-lista-container {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Agregado para hacer la tabla responsive */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* Estilo específico para el botón dentro del enlace */
+        a button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            border: none;
+            margin-right: 10px;
+        }
+
+        a button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Mensajes</h1>
+
+    <div id="contenedor-tablas">
+        <div id="datos-container">
+            <h2>Mensajes Enviados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Destinatario</th>
+                        <th>Mensaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dato in datos_formulario %}
+                        <tr>
+                            <td>{{ dato['grupo'] }}</td>
+                            <td>{{ dato['mensaje'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="otra-lista-container">
+            <h2>Mensajes Recibidos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Destinatario</th>
+                        <th>Mensaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dato in datos_otra_lista %}
+                        <tr>
+                            <td>{{ dato['grupo'] }}</td>
+                            <td>{{ dato['mensaje'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Agregado: Botón para ir a la página de registro -->
+    <a href="/"><button>Ir a Registro</button></a>
+</body>
+</html>
